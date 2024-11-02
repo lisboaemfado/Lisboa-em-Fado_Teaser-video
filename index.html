@@ -7,94 +7,73 @@
     <style>
         body {
             margin: 0;
-            height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            position: relative;
+            align-items: center;
+            height: 100vh;
             overflow: hidden;
+            background: linear-gradient(135deg, #f06, #ffdd00);
+            animation: ambilight 10s infinite alternate;
         }
+
         video {
-            width: 100%;
+            width: 90vw; /* Limit the width for tablet portrait */
+            max-width: 600px; /* Max width for larger screens */
             height: auto;
-            max-width: 600px;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            border: 5px solid white;
+            border-radius: 10px;
         }
-        #description {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 1.2em;
-        }
-        #title {
+
+        h1 {
+            color: white;
             font-size: 2em;
             text-align: center;
+            margin: 20px 0;
+            transition: opacity 1s;
         }
-        /* Ambilight-like effect */
-        .ambilight {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            filter: blur(30px);
-            z-index: -1;
-            background: linear-gradient(to right, #ff69b4, #ffd700); /* Example gradient colors */
+
+        p {
+            color: white;
+            text-align: center;
+            max-width: 600px;
+            margin: 10px 0;
+            font-size: 1.2em;
+        }
+
+        @keyframes ambilight {
+            0% { background: linear-gradient(135deg, #f06, #ffdd00); }
+            50% { background: linear-gradient(135deg, #ffdd00, #f06); }
+            100% { background: linear-gradient(135deg, #00f, #f06); }
         }
     </style>
 </head>
 <body>
+    <video controls autoplay loop>
+        <source src="https://github.com/lisboaemfado/Lisboa-em-Fado_Teaser-video/raw/refs/heads/main/LISBOA%20EM%20FADO%20-%20The%20new%20Fado%20house%20in%20Lisbon.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
     <h1 id="title">Intimate Live Fado Music Show</h1>
-    <div>
-        <video controls>
-            <source src="https://github.com/lisboaemfado/Lisboa-em-Fado_Teaser-video/raw/refs/heads/main/LISBOA%20EM%20FADO%20-%20The%20new%20Fado%20house%20in%20Lisbon.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-    <div id="description"></div>
-    <div class="ambilight"></div>
+    <p>Experience an intimate live Fado show with local artists in downtown Lisbon. Get an authentic look at traditional music as Portuguese guitars and classic guitars accompany the singers.</p>
 
     <script>
-        const titlesAndDescriptions = [
-            {
-                title: "Intimate Live Fado Music Show",
-                description: "Experience an intimate live Fado show with local artists in downtown Lisbon. Get an authentic look at traditional music as Portuguese guitars and classic guitars accompany the singers."
-            }, // English
-            {
-                title: "Show de Fado ao Vivo Íntimo",
-                description: "Viva uma apresentação íntima de Fado ao vivo com artistas locais no centro de Lisboa. Veja de forma autêntica a música tradicional acompanhada por guitarras portuguesas e clássicas."
-            }, // Portuguese
-            {
-                title: "Intimes Live-Fado-Musik-Show",
-                description: "Erleben Sie eine intime Live-Fado-Show mit lokalen Künstlern im Stadtzentrum von Lissabon. Erhalten Sie einen authentischen Einblick in die traditionelle Musik, während portugiesische Gitarren und klassische Gitarren die Sänger begleiten."
-            }, // German
-            {
-                title: "Spectacle Intime de Fado en Direct",
-                description: "Vivez un spectacle intime de Fado en direct avec des artistes locaux au centre de Lisbonne. Découvrez authentiquement la musique traditionnelle avec des guitares portugaises et classiques accompagnant les chanteurs."
-            }, // French
-            {
-                title: "Espectáculo Íntimo de Fado en Vivo",
-                description: "Vivencia una íntima actuación en vivo de Fado con artistas locales en el centro de Lisboa. Obtenga una mirada auténtica a la música tradicional mientras guitarras portuguesas y clásicas acompañan a los cantantes."
-            } // Spanish
+        const titles = [
+            "Intimate Live Fado Music Show", // English
+            "Spectacle Intime de Fado en Direct", // French
+            "Espectáculo Intimo de Fado en Vivo", // Spanish
+            "Intimo Spettacolo di Fado dal Vivo", // Italian
+            "Intimidade Espectáculo de Fado ao Vivo", // Portuguese (European)
+            "Intimo Spettacolo di Fado dal Vivo" // Italian
+            "Intimacy Fado Live Muziekshow" // Dutch
         ];
 
         let index = 0;
-        const descriptionElement = document.getElementById("description");
-        const titleElement = document.getElementById("title");
-        
-        function updateContent() {
-            titleElement.textContent = titlesAndDescriptions[index].title;
-            descriptionElement.textContent = titlesAndDescriptions[index].description;
-            index = (index + 1) % titlesAndDescriptions.length;
-        }
+        const titleElement = document.getElementById('title');
 
-        // Update the title and description every 5 seconds
-        setInterval(updateContent, 5000);
-        updateContent(); // Initial call to set the first content
+        setInterval(() => {
+            index = (index + 1) % titles.length;
+            titleElement.innerText = titles[index];
+        }, 5000); // Change title every 5 seconds
     </script>
 </body>
 </html>
