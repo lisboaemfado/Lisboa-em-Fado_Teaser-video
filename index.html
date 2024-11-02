@@ -9,23 +9,24 @@
             margin: 0;
             font-family: Arial, sans-serif;
             overflow: hidden;
+            height: 100vh;
+            color: white;
+            text-align: center;
+            transition: background-color 0.5s ease; /* Smooth transition for background color */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            color: white;
-            text-align: center;
-            transition: background-color 0.5s; /* Smooth transition for background color */
+            background-color: #000; /* Fallback in case JS fails */
         }
 
         video {
-            position: absolute; /* Position it behind other elements */
+            position: absolute;
             top: 50%;
             left: 50%;
-            width: 100%;
+            width: 100%;  /* Full width of the screen */
             height: auto;
-            transform: translate(-50%, -50%); /* Center the video */
+            transform: translate(-50%, -50%);
             z-index: 0; /* Behind the text */
         }
 
@@ -34,6 +35,7 @@
             font-size: 2.5em;
             position: relative;
             z-index: 1; /* Ensure the title is above the background */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for readability */
         }
 
         p {
@@ -42,6 +44,7 @@
             line-height: 1.5;
             position: relative;
             z-index: 1; /* Ensure the description is above the background */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Add shadow for readability */
         }
     </style>
 </head>
@@ -76,14 +79,17 @@
                     count++;
                 }
 
+                // Calculate average color
                 r = Math.floor(r / count);
                 g = Math.floor(g / count);
                 b = Math.floor(b / count);
 
+                // Set body background color
                 document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
             }
 
-            setInterval(updateBackgroundColor, 1000 / 30); // Update at 30fps
+            // Update background color every frame
+            setInterval(updateBackgroundColor, 1000 / 30); // Update at approximately 30fps
         });
     </script>
 </body>
