@@ -21,20 +21,26 @@
         }
 
         video {
-            width: 80%;
-            height: auto;
-            border: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover; /* Ensure the video covers the entire viewport */
+            z-index: -1; /* Send video to the back */
         }
 
         h1 {
             margin: 20px 0;
             font-size: 2.5em;
+            z-index: 1; /* Bring title above video */
         }
 
         p {
             max-width: 600px;
             font-size: 1.2em;
             line-height: 1.5;
+            z-index: 1; /* Bring description above video */
         }
     </style>
 </head>
