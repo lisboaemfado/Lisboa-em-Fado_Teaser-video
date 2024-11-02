@@ -26,9 +26,9 @@
         }
 
         video {
-            width: 90vw; /* Limit the width for tablet portrait */
-            max-width: 600px; /* Max width for larger screens */
-            height: auto;
+            width: 100vw; /* Full width of the viewport */
+            max-width: 100%; /* Ensures the video does not exceed the page width */
+            height: auto; /* Maintains aspect ratio */
             border: 5px solid white;
             border-radius: 10px;
             display: block;
@@ -46,7 +46,7 @@
 </head>
 <body>
     <h1 id="title">Intimate Live Fado Music Show</h1>
-    <video controls autoplay loop id="fadoVideo">
+    <video controls autoplay loop muted id="fadoVideo"> <!-- Added muted attribute for autoplay -->
         <source src="https://github.com/lisboaemfado/Lisboa-em-Fado_Teaser-video/raw/refs/heads/main/LISBOA%20EM%20FADO%20-%20The%20new%20Fado%20house%20in%20Lisbon.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
