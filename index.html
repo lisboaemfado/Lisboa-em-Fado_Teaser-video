@@ -9,13 +9,20 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* Aligns content to the top */
             align-items: center;
             height: 100vh;
             overflow: hidden;
-            background: linear-gradient(135deg, #282c34, #1c1e22); /* Default ambient background */
+            background: linear-gradient(135deg, #3b2f2f, #1c1c1c); /* Default ambient background */
             color: white; /* Default text color */
             transition: background 1s ease; /* Smooth transition for background change */
+        }
+
+        h1 {
+            font-size: 2em;
+            text-align: center;
+            margin: 20px 0; /* Spacing above and below the title */
+            transition: opacity 1s; /* Smooth transition for title */
         }
 
         video {
@@ -25,14 +32,7 @@
             border: 5px solid white;
             border-radius: 10px;
             display: block;
-            margin: 20px 0;
-        }
-
-        h1 {
-            font-size: 2em;
-            text-align: center;
-            margin: 10px 0;
-            transition: opacity 1s; /* Smooth transition for title */
+            margin: 20px 0; /* Spacing above and below the video */
         }
 
         p {
@@ -75,13 +75,11 @@
         const titleElement = document.getElementById('title');
         const descriptionElement = document.getElementById('description');
 
-        // Define a color palette based on the mood of the video
+        // Define a color palette with black, honey, and brown tones
         const colors = [
-            "#9c2a37", // Deep red
-            "#332f2d", // Dark gray
-            "#564c4c", // Dark brown
-            "#2b2727", // Almost black
-            "#3e2a31"  // Burgundy
+            "#1c1c1c", // Black
+            "#d59f23", // Honey
+            "#3e2723"  // Dark brown
         ];
 
         function changeContent() {
@@ -90,7 +88,7 @@
             descriptionElement.innerText = descriptions[index];
 
             // Change background color
-            document.body.style.background = `linear-gradient(135deg, ${colors[index % colors.length]}, #1c1e22)`;
+            document.body.style.background = `linear-gradient(135deg, ${colors[index % colors.length]}, #1c1c1c)`;
 
             index = (index + 1) % titles.length; // Loop through the index
         }
