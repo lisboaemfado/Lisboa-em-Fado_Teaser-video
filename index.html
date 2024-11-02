@@ -17,17 +17,26 @@
             height: 100vh;
             overflow: hidden;
             background: linear-gradient(135deg, #3b2f2f, #1c1c1c);
-            color: white;
             font-family: 'Libre Baskerville', serif; /* Roman-style font */
             transition: background 1s ease;
+            color: white;
         }
 
+        /* Styling for the title container */
+        .text-overlay {
+            width: 100%;
+            text-align: center;
+            position: absolute;
+            padding: 20px;
+            top: 0;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+        }
+
+        /* Title text style */
         h1 {
             font-size: 2.5em;
-            text-align: center;
-            margin: 20px 0;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Shadow for contrast */
-            transition: opacity 1s;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Shadow for readability */
+            margin: 0;
         }
 
         video {
@@ -35,28 +44,44 @@
             max-width: 100%;
             height: auto;
             display: block;
-            margin: 20px 0;
         }
 
-        p {
+        /* Styling for the description container */
+        .description-overlay {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
             text-align: center;
-            max-width: 90%;
-            margin: 10px 0;
-            font-size: 2em; /* Larger font for description */
+        }
+
+        /* Description text style */
+        p {
+            font-size: 1.8em; /* Larger font for description */
             padding: 10px;
+            margin: 0;
             line-height: 1.6;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Shadow for contrast */
-            transition: opacity 1s;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Shadow for readability */
         }
     </style>
 </head>
 <body>
-    <h1 id="title">Intimate Live Fado Music Show</h1>
+    <!-- Title section with overlay -->
+    <div class="text-overlay">
+        <h1 id="title">Intimate Live Fado Music Show</h1>
+    </div>
+
+    <!-- Autoplaying video -->
     <video autoplay loop muted id="fadoVideo">
         <source src="https://github.com/lisboaemfado/Lisboa-em-Fado_Teaser-video/raw/refs/heads/main/LISBOA%20EM%20FADO%20-%20The%20new%20Fado%20house%20in%20Lisbon.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-    <p id="description">Experience an intimate live Fado show with local artists in downtown Lisbon. Get an authentic look at traditional music as Portuguese guitars and classic guitars accompany the singers.</p>
+
+    <!-- Description section with overlay -->
+    <div class="description-overlay">
+        <p id="description">Experience an intimate live Fado show with local artists in downtown Lisbon. Get an authentic look at traditional music as Portuguese guitars and classic guitars accompany the singers.</p>
+    </div>
 
     <script>
         const titles = [
