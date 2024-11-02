@@ -9,30 +9,30 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Aligns content to the top */
+            justify-content: flex-start;
             align-items: center;
             height: 100vh;
             overflow: hidden;
             background: linear-gradient(135deg, #3b2f2f, #1c1c1c); /* Default ambient background */
-            color: white; /* Default text color */
+            color: white;
             transition: background 1s ease; /* Smooth transition for background change */
         }
 
         h1 {
             font-size: 2em;
             text-align: center;
-            margin: 20px 0; /* Spacing above and below the title */
-            transition: opacity 1s; /* Smooth transition for title */
+            margin: 20px 0;
+            transition: opacity 1s;
         }
 
         video {
-            width: 100vw; /* Full width of the viewport */
-            max-width: 100%; /* Ensures the video does not exceed the page width */
-            height: auto; /* Maintains aspect ratio */
+            width: 100vw;
+            max-width: 100%;
+            height: auto;
             border: 5px solid white;
             border-radius: 10px;
             display: block;
-            margin: 20px 0; /* Spacing above and below the video */
+            margin: 20px 0;
         }
 
         p {
@@ -40,13 +40,13 @@
             max-width: 600px;
             margin: 10px 0;
             font-size: 1.2em;
-            transition: opacity 1s; /* Smooth transition for description */
+            transition: opacity 1s;
         }
     </style>
 </head>
 <body>
     <h1 id="title">Intimate Live Fado Music Show</h1>
-    <video controls autoplay loop muted id="fadoVideo"> <!-- Added muted attribute for autoplay -->
+    <video controls autoplay loop muted id="fadoVideo">
         <source src="https://github.com/lisboaemfado/Lisboa-em-Fado_Teaser-video/raw/refs/heads/main/LISBOA%20EM%20FADO%20-%20The%20new%20Fado%20house%20in%20Lisbon.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
@@ -71,24 +71,28 @@
             "Ervaar een intieme live Fado show met lokale artiesten in het centrum van Lissabon. Krijg een authentieke kijk op traditionele muziek terwijl Portugese en klassieke gitaren de zangers begeleiden." // Dutch
         ];
 
+        // Flag color schemes based on country (English is set to a neutral theme)
+        const flagColors = [
+            ["#00247D", "#FFFFFF", "#CF142B"], // UK (English)
+            ["#006600", "#FFCC00", "#000000"], // Portugal
+            ["#0055A4", "#FFFFFF", "#EF4135"], // France
+            ["#A40000", "#FFD700", "#C8102E"], // Spain
+            ["#008C45", "#F4F5F0", "#CD212A"], // Italy
+            ["#21468B", "#FFFFFF", "#AE1C28"]  // Netherlands
+        ];
+
         let index = 0;
         const titleElement = document.getElementById('title');
         const descriptionElement = document.getElementById('description');
-
-        // Define a color palette with black, honey, and brown tones
-        const colors = [
-            "#1c1c1c", // Black
-            "#d59f23", // Honey
-            "#3e2723"  // Dark brown
-        ];
 
         function changeContent() {
             // Change title and description
             titleElement.innerText = titles[index];
             descriptionElement.innerText = descriptions[index];
 
-            // Change background color
-            document.body.style.background = `linear-gradient(135deg, ${colors[index % colors.length]}, #1c1c1c)`;
+            // Set background gradient using flag colors
+            const [color1, color2, color3] = flagColors[index];
+            document.body.style.background = `linear-gradient(135deg, ${color1}, ${color2}, ${color3})`;
 
             index = (index + 1) % titles.length; // Loop through the index
         }
