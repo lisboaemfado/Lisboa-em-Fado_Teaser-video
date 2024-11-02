@@ -13,8 +13,9 @@
             align-items: center;
             height: 100vh;
             overflow: hidden;
-            background: linear-gradient(135deg, #f06, #ffdd00);
-            animation: ambilight 10s infinite alternate;
+            background: linear-gradient(135deg, #282c34, #1c1e22); /* Default ambient background */
+            color: white; /* Default text color */
+            transition: background 1s ease; /* Smooth transition for background change */
         }
 
         video {
@@ -23,57 +24,78 @@
             height: auto;
             border: 5px solid white;
             border-radius: 10px;
+            display: block;
+            margin: 20px 0;
         }
 
         h1 {
-            color: white;
             font-size: 2em;
             text-align: center;
-            margin: 20px 0;
-            transition: opacity 1s;
+            margin: 10px 0;
+            transition: opacity 1s; /* Smooth transition for title */
         }
 
         p {
-            color: white;
             text-align: center;
             max-width: 600px;
             margin: 10px 0;
             font-size: 1.2em;
-        }
-
-        @keyframes ambilight {
-            0% { background: linear-gradient(135deg, #f06, #ffdd00); }
-            50% { background: linear-gradient(135deg, #ffdd00, #f06); }
-            100% { background: linear-gradient(135deg, #00f, #f06); }
+            transition: opacity 1s; /* Smooth transition for description */
         }
     </style>
 </head>
 <body>
-    <video controls autoplay loop>
+    <h1 id="title">Intimate Live Fado Music Show</h1>
+    <video controls autoplay loop id="fadoVideo">
         <source src="https://github.com/lisboaemfado/Lisboa-em-Fado_Teaser-video/raw/refs/heads/main/LISBOA%20EM%20FADO%20-%20The%20new%20Fado%20house%20in%20Lisbon.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-    <h1 id="title">Intimate Live Fado Music Show</h1>
-    <p>Experience an intimate live Fado show with local artists in downtown Lisbon. Get an authentic look at traditional music as Portuguese guitars and classic guitars accompany the singers.</p>
+    <p id="description">Experience an intimate live Fado show with local artists in downtown Lisbon. Get an authentic look at traditional music as Portuguese guitars and classic guitars accompany the singers.</p>
 
     <script>
         const titles = [
             "Intimate Live Fado Music Show", // English
+            "Espectáculo Intimo de Fado ao Vivo", // Portuguese
             "Spectacle Intime de Fado en Direct", // French
             "Espectáculo Intimo de Fado en Vivo", // Spanish
             "Intimo Spettacolo di Fado dal Vivo", // Italian
-            "Intimidade Espectáculo de Fado ao Vivo", // Portuguese (European)
-            "Intimo Spettacolo di Fado dal Vivo" // Italian
-            "Intimacy Fado Live Muziekshow" // Dutch
+            "Intimiteit Fado Live Muziekshow" // Dutch
+        ];
+
+        const descriptions = [
+            "Experience an intimate live Fado show with local artists in downtown Lisbon. Get an authentic look at traditional music as Portuguese guitars and classic guitars accompany the singers.", // English
+            "Experimente um espetáculo íntimo de Fado com artistas locais no centro de Lisboa. Tenha uma visão autêntica da música tradicional, enquanto as guitarras portuguesas e clássicas acompanham os cantores.", // Portuguese
+            "Vivez un spectacle intime de Fado avec des artistes locaux dans le centre de Lisbonne. Découvrez authentiquement la musique traditionnelle accompagnée de guitares portugaises et classiques.", // French
+            "Experimente un espectáculo íntimo de Fado con artistas locales en el centro de Lisboa. Obtenga una mirada auténtica a la música tradicional mientras las guitarras portuguesas y clásicas acompañan a los cantantes.", // Spanish
+            "Vivi un intimo spettacolo di Fado con artisti locali nel centro di Lisbona. Scopri un’autentica visione della musica tradizionale mentre le chitarre portoghesi e classiche accompagnano i cantanti.", // Italian
+            "Ervaar een intieme live Fado show met lokale artiesten in het centrum van Lissabon. Krijg een authentieke kijk op traditionele muziek terwijl Portugese en klassieke gitaren de zangers begeleiden." // Dutch
         ];
 
         let index = 0;
         const titleElement = document.getElementById('title');
+        const descriptionElement = document.getElementById('description');
 
-        setInterval(() => {
-            index = (index + 1) % titles.length;
+        // Define a color palette based on the mood of the video
+        const colors = [
+            "#9c2a37", // Deep red
+            "#332f2d", // Dark gray
+            "#564c4c", // Dark brown
+            "#2b2727", // Almost black
+            "#3e2a31"  // Burgundy
+        ];
+
+        function changeContent() {
+            // Change title and description
             titleElement.innerText = titles[index];
-        }, 5000); // Change title every 5 seconds
+            descriptionElement.innerText = descriptions[index];
+
+            // Change background color
+            document.body.style.background = `linear-gradient(135deg, ${colors[index % colors.length]}, #1c1e22)`;
+
+            index = (index + 1) % titles.length; // Loop through the index
+        }
+
+        setInterval(changeContent, 5000); // Change every 5 seconds
     </script>
 </body>
 </html>
