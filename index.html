@@ -9,7 +9,7 @@
             margin: 0;
             font-family: Arial, sans-serif;
             overflow: hidden;
-            height: 100vh;
+            height: 100vh; /* Full height of the viewport */
             color: white;
             text-align: center;
             transition: background-color 0.5s ease; /* Smooth transition for background color */
@@ -21,12 +21,12 @@
         }
 
         video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;  /* Full width of the screen */
-            height: auto;
-            transform: translate(-50%, -50%);
+            position: fixed; /* Use fixed positioning to keep the video in place */
+            top: 0;
+            left: 0;
+            width: 100vw;  /* Full viewport width */
+            height: 100vh; /* Full viewport height */
+            object-fit: cover; /* Cover the entire screen while maintaining aspect ratio */
             z-index: 0; /* Behind the text */
         }
 
@@ -89,8 +89,4 @@
             }
 
             // Update background color every frame
-            setInterval(updateBackgroundColor, 1000 / 30); // Update at approximately 30fps
-        });
-    </script>
-</body>
-</html>
+            setInterval(updateBackgroundColor, 1000 / 30)
