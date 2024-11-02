@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Intimate Live Fado Music Show</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+        
         body {
             margin: 0;
             display: flex;
@@ -13,15 +15,17 @@
             align-items: center;
             height: 100vh;
             overflow: hidden;
-            background: linear-gradient(135deg, #3b2f2f, #1c1c1c); /* Default ambient background */
+            background: linear-gradient(135deg, #3b2f2f, #1c1c1c);
             color: white;
-            transition: background 1s ease; /* Smooth transition for background change */
+            font-family: 'Libre Baskerville', serif; /* Roman-style font */
+            transition: background 1s ease;
         }
 
         h1 {
             font-size: 2em;
             text-align: center;
             margin: 20px 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Shadow for contrast */
             transition: opacity 1s;
         }
 
@@ -29,16 +33,18 @@
             width: 100vw;
             max-width: 100%;
             height: auto;
-            border: none;
             display: block;
             margin: 20px 0;
         }
 
         p {
             text-align: center;
-            max-width: 600px;
+            max-width: 90%;
             margin: 10px 0;
-            font-size: 1.2em;
+            font-size: 1.5em; /* Larger font to fill screen space */
+            padding: 10px;
+            line-height: 1.6;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Shadow for contrast */
             transition: opacity 1s;
         }
     </style>
